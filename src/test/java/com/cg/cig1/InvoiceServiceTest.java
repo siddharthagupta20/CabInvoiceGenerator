@@ -31,4 +31,14 @@ public class InvoiceServiceTest {
 		InvoiceSummary expectedSummary = new InvoiceSummary(2, 115.0);
 		assertEquals(expectedSummary, summary);
 	}
+
+	@Test
+	public void givenUserIdReturnInvoiceSummary() {
+		String userId = "sid";
+		RideRepository rideRepository = new RideRepository();
+		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+		rideRepository.addUserRide(userId, rides);
+		Ride[] userRides = rideRepository.getUserRides(userId);
+		assertEquals(rides[1], userRides[1]);
+	}
 }
