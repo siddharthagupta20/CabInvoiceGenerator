@@ -16,11 +16,11 @@ public class InvoiceService {
 
 	}
 
-	public double calcFare(Ride[] rides) {
+	public InvoiceSummary calcFare(Ride[] rides) {
 		double totalFare = 0;
 		for (Ride ride : rides) {
 			totalFare += ride.getDistance() * COST_PER_KM + ride.getTime() * COST_PER_MIN;
 		}
-		return totalFare;
+		return new InvoiceSummary(rides.length, totalFare);
 	}
 }

@@ -27,7 +27,8 @@ public class InvoiceServiceTest {
 	public void givenRides_ShouldReturnTotalFare() {
 		InvoiceService invoiceService = new InvoiceService();
 		Ride[] rides = { new Ride(5.0, 2), new Ride(6.0, 3) };
-		double fare = invoiceService.calcFare(rides);
-		assertEquals(115, fare, 0.0);
+		InvoiceSummary summary = invoiceService.calcFare(rides);
+		InvoiceSummary expectedSummary = new InvoiceSummary(2, 115.0);
+		assertEquals(expectedSummary, summary);
 	}
 }
